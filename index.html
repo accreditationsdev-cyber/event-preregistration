@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Pre-Registration</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            padding: 35px 25px;
+            border-radius: 16px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .suggestions {
+            text-align: left;
+            max-height: 220px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        .suggestion {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        .suggestion:hover {
+            background: #f2f2f2;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #111827;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success {
+            margin-top: 20px;
+        }
+
+        .table-number {
+            font-size: 50px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .instruction {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .back {
+            margin-top: 20px;
+            background: #eee;
+            color: #222;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- REGISTRATION SCREEN -->
+    <div id="registrationScreen">
+
+        <h1>Event Pre-Registration</h1>
+
+        <p class="subtitle">
+            Please search and select your name to continue.
+        </p>
+
+        <input
+            type="text"
+            id="nameSearch"
+            placeholder="Search your name..."
+            autocomplete="off"
+        >
+
+        <div id="suggestions" class="suggestions"></div>
+
+        <button id="registerButton" disabled>
+            Continue
+        </button>
+
+    </div>
+
+
+    <!-- RESULT SCREEN -->
+    <div id="resultScreen" class="hidden">
+
+        <div class="success">
+
+            <h1>🎉 Pre-Registration Complete!</h1>
+
+            <p>Welcome,</p>
+
+            <h2 id="guestName"></h2>
+
+            <p>
+                Your assigned registration table is:
+            </p>
+
+            <div class="table-number" id="tableNumber"></div>
+
+            <p class="instruction">
+                When you arrive at the event, please proceed
+                directly to your assigned registration table.
+            </p>
+
+            <p class="instruction">
+                📱 We recommend taking a screenshot of this
+                page for easy reference.
+            </p>
+
+            <button class="back" onclick="location.reload()">
+                Done
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/*
+    TEMPORARY TEST DATA
+
+    We will replace this with your complete
+    Excel list after testing the website.
+*/
+
+const guests = [
+    {
+        name: "GARCIA, LETICIA",
+        table: "8"
+    },
+    {
+        name: "GARCIA, ALYSSA",
+        table: "6"
+    },
+    {
+        name: "CASACOP, MICHELLE",
+        table: "8"
+    },
+    {
+        name: "PONTIGON, RHEA",
+        table: "26, 32, 37, 43, 44, 48, 49, 55, 60"
+    },
+    {
+        name: "CABRERA, JASMIN",
+        table: "26, 32, 37, 43, 44, 48, 49, 55, 60"
+    }
+];
+
+
+let selectedGuest = null;
+
+const searchBox = document.getElementById("nameSearch");
+const suggestions = document.getElementById("suggestions");
+const registerButton = document.getElementById("registerButton");
+
+
+// SEARCH NAMES
+searchBox.addEventListener("input", function () {
+
+    const search = this.value.toLowerCase().trim();
+
+    suggestions.innerHTML = "";
+    selectedGuest = null;
+    registerButton.disabled = true;
+
+    if (!search) {
+        return;
+    }
+
+    const matches = guests.filter(guest =>
+        guest.name.toLowerCase().includes(search)
+    );
+
+    matches.forEach(guest => {
+
+        const div = document.createElement("div");
+
+        div.className = "suggestion";
+
+        div.textContent = guest.name;
+
+        div.onclick = function () {
+
+            searchBox.value = guest.name;
+
+            selectedGuest = guest;
+
+            suggestions.innerHTML = "";
+
+            registerButton.disabled = false;
+
+        };
+
+        suggestions.appendChild(div);
+
+    });
+
+});
+
+
+// REGISTER
+registerButton.addEventListener("click", function () {
+
+    if (!selectedGuest) {
+        return;
+    }
+
+    document.getElementById("registrationScreen")
+        .classList.add("hidden");
+
+    document.getElementById("resultScreen")
+        .classList.remove("hidden");
+
+    document.getElementById("guestName")
+        .textContent = selectedGuest.name;
+
+    document.getElementById("tableNumber")
+        .textContent = selectedGuest.table;
+
+});
+
+</script>
+
+</body>
+</html>
