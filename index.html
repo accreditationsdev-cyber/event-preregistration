@@ -5,17 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Event Pre-Registration</title>
 <style>
-*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px} .container{width:100%;max-width:500px;background:#fff;padding:35px 25px;border-radius:16px;box-shadow:0 5px 25px rgba(0,0,0,.08);text-align:center} h1{margin:0 0 10px} .subtitle{color:#666;margin-bottom:30px;line-height:1.5} input{width:100%;padding:15px;border:1px solid #ccc;border-radius:10px;font-size:16px;margin-bottom:10px} .suggestions{text-align:left;max-height:220px;overflow-y:auto;margin-bottom:15px} .suggestion{padding:12px;border-bottom:1px solid #eee;cursor:pointer} .suggestion:hover{background:#f2f2f2} button{width:100%;padding:15px;border:0;border-radius:10px;background:#111827;color:#fff;font-size:16px;cursor:pointer} button:disabled{background:#aaa;cursor:not-allowed} .hidden{display:none} .label{color:#666;font-size:15px;margin-top:24px} .value{font-weight:bold;font-size:24px;margin:8px 0 20px;word-break:break-word} .table-number{font-size:42px} .instruction{color:#555;line-height:1.6} .back{margin-top:20px;background:#eee;color:#222} .no-results{color:#888;padding:12px}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
+.container{width:100%;max-width:500px;background:#fff;padding:35px 25px;border-radius:16px;box-shadow:0 5px 25px rgba(0,0,0,.08);text-align:center}
+h1{margin:0 0 10px}
+.subtitle{color:#666;margin-bottom:30px;line-height:1.5}
+input{width:100%;padding:15px;border:1px solid #ccc;border-radius:10px;font-size:16px;margin-bottom:10px}
+.suggestions{text-align:left;max-height:220px;overflow-y:auto;margin-bottom:15px}
+.suggestion{padding:12px;border-bottom:1px solid #eee;cursor:pointer}
+.suggestion:hover{background:#f2f2f2}
+button{width:100%;padding:15px;border:0;border-radius:10px;background:#111827;color:#fff;font-size:16px;cursor:pointer}
+button:disabled{background:#aaa;cursor:not-allowed}
+.hidden{display:none}
+.label{color:#666;font-size:15px;margin-top:24px}
+.value{font-weight:bold;font-size:24px;margin:8px 0 20px;word-break:break-word}
+.table-number{font-size:42px}
+.instruction{color:#555;line-height:1.6}
+.back{margin-top:20px;background:#eee;color:#222}
+.no-results{color:#888;padding:12px}
+.status{min-height:20px;color:#666;font-size:13px;margin-top:10px}
 </style>
 </head>
 <body>
 <div class="container">
+
 <div id="registrationScreen">
 <h1>Event Pre-Registration</h1>
 <p class="subtitle">Please search and select your name to continue.</p>
+
 <input type="text" id="nameSearch" placeholder="Search your name..." autocomplete="off">
 <div id="suggestions" class="suggestions"></div>
+
 <button id="registerButton" disabled>Complete Pre-Registration</button>
+<div id="statusMessage" class="status"></div>
 </div>
 
 <div id="resultScreen" class="hidden">
@@ -37,11 +59,15 @@
 <p class="instruction">Please proceed to your assigned registration personnel for assistance at the event.</p>
 <p class="instruction">📱 We recommend taking a screenshot of this page for easy reference.</p>
 <p class="instruction"><strong>Thank you!</strong></p>
+
 <button class="back" onclick="location.reload()">Done</button>
 </div>
+
 </div>
 
 <script>
+const MONITORING_URL = "https://script.google.com/macros/s/AKfycbzVNH0dReVQt0OyzibgcMino07s9c6f5H-Np6lxW3GsreKnTwM3Bx-pYjDIGWYJ5Svgxw/exec";
+
 const guests = [
   {
     "name": "GARCIA, LETICIA",
@@ -3002,45 +3028,107 @@ const guests = [
     "personnel": "KER"
   }
 ];
-let selectedGuest = null;
-const searchBox=document.getElementById("nameSearch");
-const suggestions=document.getElementById("suggestions");
-const registerButton=document.getElementById("registerButton");
 
-searchBox.addEventListener("input",function(){
- const search=this.value.toLowerCase().trim();
- suggestions.innerHTML=""; selectedGuest=null; registerButton.disabled=true;
- if(!search) return;
- const matches=guests.filter(g=>g.name.toLowerCase().includes(search));
- if(!matches.length){
-   suggestions.innerHTML='<div class="no-results">Name not found. Please check your spelling or contact the event organizers.</div>';
-   return;
- }
- matches.slice(0,20).forEach(g=>{
-   const div=document.createElement("div"); div.className="suggestion"; div.textContent=g.name;
-   div.onclick=()=>{searchBox.value=g.name;selectedGuest=g;suggestions.innerHTML="";registerButton.disabled=false;};
-   suggestions.appendChild(div);
- });
- if(matches.length>20){
-   const more=document.createElement("div");more.className="no-results";more.textContent="Please type more letters to narrow the list.";suggestions.appendChild(more);
- }
+let selectedGuest = null;
+
+const searchBox = document.getElementById("nameSearch");
+const suggestions = document.getElementById("suggestions");
+const registerButton = document.getElementById("registerButton");
+const statusMessage = document.getElementById("statusMessage");
+
+searchBox.addEventListener("input", function() {
+    const search = this.value.toLowerCase().trim();
+
+    suggestions.innerHTML = "";
+    selectedGuest = null;
+    registerButton.disabled = true;
+    statusMessage.textContent = "";
+
+    if (!search) return;
+
+    const matches = guests.filter(guest =>
+        guest.name.toLowerCase().includes(search)
+    );
+
+    if (!matches.length) {
+        suggestions.innerHTML =
+            '<div class="no-results">Name not found. Please check your spelling or contact the event organizers.</div>';
+        return;
+    }
+
+    matches.slice(0, 20).forEach(guest => {
+        const div = document.createElement("div");
+        div.className = "suggestion";
+        div.textContent = guest.name;
+
+        div.onclick = function() {
+            searchBox.value = guest.name;
+            selectedGuest = guest;
+            suggestions.innerHTML = "";
+            registerButton.disabled = false;
+            statusMessage.textContent = "";
+        };
+
+        suggestions.appendChild(div);
+    });
+
+    if (matches.length > 20) {
+        const more = document.createElement("div");
+        more.className = "no-results";
+        more.textContent = "Please type more letters to narrow the list.";
+        suggestions.appendChild(more);
+    }
 });
 
-registerButton.addEventListener("click",function(){
- if(!selectedGuest)return;
- document.getElementById("registrationScreen").classList.add("hidden");
- document.getElementById("resultScreen").classList.remove("hidden");
- document.getElementById("guestName").textContent=selectedGuest.name;
- document.getElementById("tableNumber").textContent=selectedGuest.table;
- document.getElementById("personnelName").textContent=selectedGuest.personnel;
- const awardSection=document.getElementById("awardSection");
- if(selectedGuest.awardee && selectedGuest.awardee.trim()){
-   document.getElementById("awardee").textContent=selectedGuest.awardee;
-   awardSection.classList.remove("hidden");
- } else {
-   awardSection.classList.add("hidden");
-   document.getElementById("awardee").textContent="";
- }
+registerButton.addEventListener("click", async function() {
+    if (!selectedGuest) return;
+
+    const guest = selectedGuest;
+
+    registerButton.disabled = true;
+    registerButton.textContent = "Registering...";
+    statusMessage.textContent = "Saving your pre-registration...";
+
+    const payload = {
+        name: guest.name,
+        awardee: guest.awardee || "",
+        table: guest.table || "",
+        personnel: guest.personnel || ""
+    };
+
+    try {
+        // text/plain keeps this request simple so Apps Script can receive it
+        // without a browser CORS preflight.
+        await fetch(MONITORING_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(payload)
+        });
+    } catch (error) {
+        console.error("Monitoring submission error:", error);
+        // The assignment page still opens even if the monitoring request
+        // cannot be confirmed by the browser.
+    }
+
+    document.getElementById("registrationScreen").classList.add("hidden");
+    document.getElementById("resultScreen").classList.remove("hidden");
+
+    document.getElementById("guestName").textContent = guest.name;
+    document.getElementById("tableNumber").textContent = guest.table;
+    document.getElementById("personnelName").textContent = guest.personnel;
+
+    const awardSection = document.getElementById("awardSection");
+
+    if (guest.awardee && guest.awardee.trim()) {
+        document.getElementById("awardee").textContent = guest.awardee;
+        awardSection.classList.remove("hidden");
+    } else {
+        awardSection.classList.add("hidden");
+        document.getElementById("awardee").textContent = "";
+    }
 });
 </script>
 </body>
