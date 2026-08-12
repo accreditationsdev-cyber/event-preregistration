@@ -3534,14 +3534,100 @@ const guests = [
   }
 ];
 
-let selectedGuest = null;
+  let selectedGuest = null;
+
+// List of names already registered in Google Sheets
+const registeredNames = new Set();
 
 const searchBox = document.getElementById("nameSearch");
 const suggestions = document.getElementById("suggestions");
 const registerButton = document.getElementById("registerButton");
 const statusMessage = document.getElementById("statusMessage");
 
+
+// Make names consistent for comparison
+function normalizeName(name) {
+    return String(name || "")
+        .trim()
+        .replace(/\s+/g, " ")
+        .toUpperCase();
+}
+
+
+// Check if name is already registered
+function isAlreadyRegistered(name) {
+    return registeredNames.has(normalizeName(name));
+}
+
+
+// =====================================================
+// LOAD REGISTERED NAMES FROM GOOGLE SHEET
+// =====================================================
+
+async function loadRegisteredNames() {
+
+    searchBox.disabled = true;
+    registerButton.disabled = true;
+
+    searchBox.placeholder = "Checking available names...";
+    statusMessage.textContent = "Loading registration list...";
+
+    try {
+
+        const response = await fetch(
+            MONITORING_URL + "?action=registered&t=" + Date.now(),
+            {
+                method: "GET",
+                cache: "no-store"
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Unable to retrieve registration list.");
+        }
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.error || "Unable to retrieve registrations.");
+        }
+
+        registeredNames.clear();
+
+        (data.registeredNames || []).forEach(name => {
+            registeredNames.add(normalizeName(name));
+        });
+
+        searchBox.disabled = false;
+        searchBox.placeholder = "Search your name...";
+        statusMessage.textContent = "";
+
+        console.log(
+            "Registered names loaded:",
+            registeredNames.size
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Unable to load registered names:",
+            error
+        );
+
+        statusMessage.textContent =
+            "Unable to check available names. Please refresh the page.";
+
+        searchBox.disabled = true;
+    }
+}
+
+
+// =====================================================
+// SEARCH AVAILABLE NAMES
+// =====================================================
+
 searchBox.addEventListener("input", function() {
+
     const search = this.value.toLowerCase().trim();
 
     suggestions.innerHTML = "";
@@ -3551,48 +3637,108 @@ searchBox.addEventListener("input", function() {
 
     if (!search) return;
 
+
+    // Search guest list BUT exclude registered names
     const matches = guests.filter(guest =>
+        !isAlreadyRegistered(guest.name) &&
         guest.name.toLowerCase().includes(search)
     );
 
+
     if (!matches.length) {
+
         suggestions.innerHTML =
-            '<div class="no-results">Name not found. Please check your spelling or contact the event organizers.</div>';
+            '<div class="no-results">' +
+            'Name not found or already registered.' +
+            '</div>';
+
         return;
     }
 
+
     matches.slice(0, 20).forEach(guest => {
+
         const div = document.createElement("div");
+
         div.className = "suggestion";
         div.textContent = guest.name;
 
+
         div.onclick = function() {
+
+            // Check again before selection
+            if (isAlreadyRegistered(guest.name)) {
+
+                suggestions.innerHTML =
+                    '<div class="no-results">' +
+                    'This name has already been registered.' +
+                    '</div>';
+
+                selectedGuest = null;
+                registerButton.disabled = true;
+
+                return;
+            }
+
+
             searchBox.value = guest.name;
             selectedGuest = guest;
+
             suggestions.innerHTML = "";
             registerButton.disabled = false;
             statusMessage.textContent = "";
         };
 
+
         suggestions.appendChild(div);
     });
 
+
     if (matches.length > 20) {
+
         const more = document.createElement("div");
+
         more.className = "no-results";
-        more.textContent = "Please type more letters to narrow the list.";
+
+        more.textContent =
+            "Please type more letters to narrow the list.";
+
         suggestions.appendChild(more);
     }
 });
 
+
+// =====================================================
+// COMPLETE REGISTRATION
+// =====================================================
+
 registerButton.addEventListener("click", async function() {
+
     if (!selectedGuest) return;
 
     const guest = selectedGuest;
 
+
+    // Final browser-side duplicate check
+    if (isAlreadyRegistered(guest.name)) {
+
+        selectedGuest = null;
+        registerButton.disabled = true;
+        searchBox.value = "";
+
+        statusMessage.textContent =
+            "This attendee has already registered.";
+
+        return;
+    }
+
+
     registerButton.disabled = true;
     registerButton.textContent = "Registering...";
-    statusMessage.textContent = "Saving your pre-registration...";
+
+    statusMessage.textContent =
+        "Saving your pre-registration...";
+
 
     const payload = {
         name: guest.name,
@@ -3602,47 +3748,113 @@ registerButton.addEventListener("click", async function() {
         raffle: guest.raffle || ""
     };
 
+
     try {
-        // text/plain keeps this request simple so Apps Script can receive it
-        // without a browser CORS preflight.
+
         await fetch(MONITORING_URL, {
+
             method: "POST",
+
             mode: "no-cors",
+
             headers: {
-                "Content-Type": "text/plain;charset=utf-8"
+                "Content-Type":
+                    "text/plain;charset=utf-8"
             },
+
             body: JSON.stringify(payload)
         });
+
+
+        // Immediately remove this name
+        // from available choices on this device
+        registeredNames.add(
+            normalizeName(guest.name)
+        );
+
+
     } catch (error) {
-        console.error("Monitoring submission error:", error);
-        // The assignment page still opens even if the monitoring request
-        // cannot be confirmed by the browser.
+
+        console.error(
+            "Registration submission error:",
+            error
+        );
     }
 
-    document.getElementById("registrationScreen").classList.add("hidden");
-    document.getElementById("resultScreen").classList.remove("hidden");
 
-    document.getElementById("guestName").textContent = guest.name;
-    document.getElementById("tableNumber").textContent = guest.table;
-    document.getElementById("personnelName").textContent = guest.personnel;
+    // =================================================
+    // SHOW REGISTRATION RESULT
+    // =================================================
 
-    const awardSection = document.getElementById("awardSection");
+    document
+        .getElementById("registrationScreen")
+        .classList.add("hidden");
+
+    document
+        .getElementById("resultScreen")
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById("guestName")
+        .textContent = guest.name;
+
+    document
+        .getElementById("tableNumber")
+        .textContent = guest.table;
+
+    document
+        .getElementById("personnelName")
+        .textContent = guest.personnel;
+
+
+    const awardSection =
+        document.getElementById("awardSection");
+
 
     if (guest.awardee && guest.awardee.trim()) {
-        document.getElementById("awardee").textContent = guest.awardee;
+
+        document
+            .getElementById("awardee")
+            .textContent = guest.awardee;
+
         awardSection.classList.remove("hidden");
+
     } else {
+
         awardSection.classList.add("hidden");
-        document.getElementById("awardee").textContent = "";
+
+        document
+            .getElementById("awardee")
+            .textContent = "";
     }
 
-    const raffleSection = document.getElementById("raffleSection");
-    if (guest.raffle && guest.raffle.trim().toUpperCase() === "YES") {
+
+    const raffleSection =
+        document.getElementById("raffleSection");
+
+
+    if (
+        guest.raffle &&
+        guest.raffle.trim().toUpperCase() === "YES"
+    ) {
+
         raffleSection.classList.remove("hidden");
+
     } else {
+
         raffleSection.classList.add("hidden");
     }
+
 });
+
+
+// =====================================================
+// CHECK GOOGLE SHEET WHEN PAGE OPENS
+// =====================================================
+
+loadRegisteredNames();
 </script>
 </body>
 </html>
+  
