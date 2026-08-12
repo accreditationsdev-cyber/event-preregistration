@@ -24,6 +24,7 @@ button:disabled{background:#aaa;cursor:not-allowed}
 .back{margin-top:20px;background:#eee;color:#222}
 .no-results{color:#888;padding:12px}
 .status{min-height:20px;color:#666;font-size:13px;margin-top:10px}
+.raffle-badge{display:inline-block;margin:8px 0 20px;padding:10px 18px;border-radius:999px;background:#fff7e0;color:#8a6d00;font-weight:bold;font-size:16px;border:1px solid #f0d878}
 </style>
 </head>
 <body>
@@ -56,6 +57,10 @@ button:disabled{background:#aaa;cursor:not-allowed}
 <p class="label"><strong>Registration Personnel</strong></p>
 <div class="value" id="personnelName"></div>
 
+<div id="raffleSection" class="hidden">
+<div class="raffle-badge">🎟️ Included in Raffle Draw</div>
+</div>
+
 <p class="instruction">Please proceed to your assigned registration personnel for assistance at the event.</p>
 <p class="instruction">📱 We recommend taking a screenshot of this page for easy reference.</p>
 <p class="instruction"><strong>Thank you!</strong></p>
@@ -73,2959 +78,3459 @@ const guests = [
     "name": "GARCIA, LETICIA",
     "awardee": "Top Nominee Director",
     "table": "8",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "GARCIA, ALYSSA",
     "awardee": "Top Nominee Manager",
     "table": "6",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "CASACOP, MICHELLE",
     "awardee": "VIP 200",
     "table": "8",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "PONTIGON, RHEA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "CABRERA, JASMIN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "SOSA, RAQUEL",
     "awardee": "Top Nominee Agent",
     "table": "7",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "ADORNADO, KARMELA",
     "awardee": "Top Nominee Agent",
     "table": "7",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "TAGUIAM, MARILYN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "OPEÑA, ELOISA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "ARCINUE, HAZEL",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "OGAYON, LORILIE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "ALVAREZ, MARIBEL",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "NAYLE, NATANIA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "CANILANG, MARY JOY",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "RAMENTO, MELMAR",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "BONTOG, CHRISTIAN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "14",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "ALCANTARA, DIGNA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "LICUDO, ELLAINE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "CENTENO, MARITES",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "MANARPAAC, MARIVIE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "CORDOVA, NOREL",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "BATALLA, CRISPINA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "BONTOG, IAN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "ALCANTARA, DINA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "HUMARANG, ANABELLE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "BATACAN, ROLAND",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "HERRERA, CAMILLE JOY",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "RAFOLS, RONA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "GRAGASIN, WILJON",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "14",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "VELUZ, SHERYL",
     "awardee": "VIP 200",
     "table": "8",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "AVENTAJADO, XYRA AVRYLL",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "AVENTAJADO, FLORANGELIE",
     "awardee": "Top Nominee Agent",
     "table": "7",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "DEQUITO, RUFFA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "TADEO, ROWENA",
     "awardee": "Top Nominee Director",
     "table": "8",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "BUENVIAJE, JONALYN",
     "awardee": "Top Nominee Manager",
     "table": "6",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "ALAS-AS, JOCELYN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "BECINA, LEMUEL",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "MONTIERRO, BLANCA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "ESPIRITU, EDELYN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "GUILATCO, GEORGETTE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "ENCARNIEZ, RYAN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "BANAYO, MARIA",
     "awardee": "VIP 200",
     "table": "13",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "CONTEMPLACION, LORINETH",
     "awardee": "VIP 200",
     "table": "13",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "UNTALAN, JAMIE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "TENORIO, ERICA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "LUCIDO, STACY",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "REYES, RONNEL",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "ANTOQUE, BIENVENIDO JR.",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "MERCADO, JONALYN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "MAGLUYAN, LORAINE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "ANDAYA, JOYCE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "MATAYA, JOSE GABRIEL",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "HERNANDEZ, CHERYLL",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "MUNOZ, APRIL ROSE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "ALBOR, ELENA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "ENERO, JOHN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "NADERA, GEOFFREY",
     "awardee": "VIP 200",
     "table": "13",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "GUEVARRA, EDELIZA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "REPOTENTE, ANNA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "VICTA, MA. CELIENDA",
     "awardee": "Top Nominee Director",
     "table": "8",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "CARTABIO, MARK",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "BATALLA, NICHOLLE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "PETALLO, RICARDO",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "JUNIO, JESSICA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "ZARAGOZA, CRISELYN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "ANDAYA, JOENALYN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "MESTICA, KEYSHA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "BACAYCAY, LUZVIMINDA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "DIAZ, SUGAR",
     "awardee": "Top Nominee Agent",
     "table": "7",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "REMOLADOR, KENNETH",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "HIJALGA, MA. ANCY",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "CLIMACOSA, EMELYN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "CORRAL, CRISTEL",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "NACIONALES, EVANGELINE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "MABILANGAN, MARY JOY",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "DELA PENA, AILA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "FELIAS, JAYAR",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "14",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "BARCOMA, KAREN",
     "awardee": "Top Nominee Manager",
     "table": "6",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "LUMANTAD, GERBY",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "VALDECANTOS, GLAZY",
     "awardee": "Top Nominee Agent",
     "table": "7",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "FRANCISCO, GINALYN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "BARCOMA, KATHERINE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "MARGATE, JEVEN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "ASAS, MARY GRACE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": "YES"
   },
   {
     "name": "NICOLAS, JOSHUA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "LEGASPI, ROBERTO CARLO",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "LUMANTAD, JAZZIE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "MONTEMAYOR, RUBEN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "DE GUZMAN, ROWENA",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "14",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "FERNANDEZ, CHARLENE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "PATALAGSA, DAVID",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "PILAPIL, FREDDIE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "GONZALES, DON LEVON",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "RUBEJES, PATRICK JOHN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "RICABLANCA, VICTORIA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "AGUILAR, KATHRYN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "14",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "AGUILAR, KARILYN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "GUASIS, EUNICE ANNE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "AGUILAR, VILMA",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "14",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "AGUILAR, ALYSSA IAN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "PEREZ, MICHELLE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "CARANDANG, HANNAH",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "AGUILAR, CLAIRE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "VELASCO, MA. REGINE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "LUBIS, JAYDENCIO",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "14",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "MAGHIRANG, MARK ANTHONY",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "SALAS, WERLENE JOY",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "RUBIATO, RHENZY",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "MILLAN, ROSALIE",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "14",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "JIMENEZ, BLESSIE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "ANAT, CHARITO",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "SANGA, MARILOU",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "OABEL, ARMIESHANE",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "ESCOBIÑAS, JOANA",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "VILLAVERDE, USZIEL",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "REFORMA, JUDY ANN",
     "awardee": "",
     "table": "26,32,37,43,44,48,49,55,60",
-    "personnel": "JOEY"
+    "personnel": "JOEY",
+    "raffle": ""
   },
   {
     "name": "MENDOZA , JANETTE D",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "19",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MOJICA, REIZELL",
     "awardee": "Top Nominee Manager",
     "table": "6",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "DELA CRUZ, JANET",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MENDOZA , ANGELIKA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "HERNANDEZ, ZAYDERICK",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "GETALADO, JHON CARLO",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MOJICA, NERISSA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "LANTING, NICOLE MAE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "LLAMAS, LIEZL",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MANARIN, RUBYLYN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ESPOSO, WINCEL",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "TINIMBANG, JONNALYN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MATEO, KIM AARON",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "NERIDA, JASON",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "RAMOS, RYAN PAULO",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "19",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "RIANZARES, KYLE HENDRIX",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "TRANSI, JONALYN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "BELERMINO, JHON",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "RIVAS, LASANTHA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "IBANA, EDSEL",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "DOMINGO, EMERSON",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "BUEVENIDA, IANNE CHANNEL",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "HENSON, JACKIELYN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "AGUILAR, VONJ",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "TOLENTINNO, EDRICH",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "VILLAREAL, ANTHONY",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "EMPEDRAD, JOY",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "NAVO, CATHERINE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "BAUTISTA, SHELLA MARIZ",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "BURRI, JORETTE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "EMPEDRAD, ALEX",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "VILLAREAL, FORTUNE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "PRICILLA, REYMAN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "TALAY, MARILOU",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MARBELLA, KRIZA MAE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "TICAR, JOEL",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ROSAL , ANNALYNN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "18",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "REMOTO, JOY CECILE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ANCHETA, REJAINE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ABAYON, LANCE",
     "awardee": "Top Nominee Manager",
     "table": "6",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "SANTIAGO, CHRISTIAN",
     "awardee": "Top Nominee Agent",
     "table": "7",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": "YES"
   },
   {
     "name": "MANGILIN, MARICEL",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "YCO, PAMELA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "BAQUIRAN , YVO",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "18",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "COLINARES, GERALDINE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "SALMIO, ALVIN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "GUMARO, CLARENCE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "GERONIMO, ZENY",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "18",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ADONA, ANA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "CASTRO, DEXTER",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "19",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MATHEUS, NICOLE ANDREA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "CADAG, JUDEE ANN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "CASTRO, KAREN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "EDAD, JONEL",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "BINATAC, ROBERT",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ABCEDE, DEN RODRIGO",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "TEJANO, SAMUEL",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "19",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MENESES, DONALD",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "CARBAJOSA, ALYSSA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "CELESTINO, MARY GRACE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "REYES, JAM EMILIANA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "DELOS SANTOS, KATRINA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ALARVA, RUSSEL",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "BENITEZ, NATHALIE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "BAUTISTA, RENANTE",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "19",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "SALLIENTES, ELAINE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "PINTO, GEMMA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "SABALBARINO, RIZZA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "SUPREMO, ANGELICA",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "18",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "TENG, RG",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ABULECHE, RUBY",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ALVARADO, RENELLA",
     "awardee": "Top Nominee Director",
     "table": "8",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "DOLOCANOG, JONAFRELL",
     "awardee": "Top Nominee Manager",
     "table": "6",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": "YES"
   },
   {
     "name": "DOLOCANOG, FRITCYLEE",
     "awardee": "Top VISMIN",
     "table": "7",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": "YES"
   },
   {
     "name": "MONTECASTRO, LAETICIA",
     "awardee": "Top VISMIN",
     "table": "7",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": "YES"
   },
   {
     "name": "VELARDE, LOVELY JANE",
     "awardee": "VIP 200",
     "table": "13",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": "YES"
   },
   {
     "name": "BAYLON, BEVERLY",
     "awardee": "VIP 200",
     "table": "13",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": "YES"
   },
   {
     "name": "SUMUGAT, LIZAROSE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": "YES"
   },
   {
     "name": "FULGENCIO, MA. ABIGAIL",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": "YES"
   },
   {
     "name": "PELLAZAR, JANELLE MARIA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ILAYA , XANDREX",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "GONZALES, RONALD SIXTO",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "DE CASTRO, ANGELEEN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "GANIBAN , JERRELYN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "TAN, KATH",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "FORONDA, JOHN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "19",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "CUACHON, KEVIN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ESPANIOLA, PATRICK",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "FRANCO, INNAH MAE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "YABUT, RANDOLF",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "DELA PENA, MARK ANTHONY",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MACARIO , RICHARD ROMMEL",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "DE VEYRA, LEA ANALYN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "18",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "RAMOS, EGIE LOUELA",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ISON, RON BENEDICT",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "AVILLA, ESYLE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "PRINCIPE, DIANAROSE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "PRINCIPE, RONALD",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ARIOLA, NIA MAI",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "IBANEZ, MACKEY",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "CARATING, CARLO",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "CANOMAY, CAMILLE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MONTEROLA, CHRISTIAN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MATEO, ARVIE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "TACCAD, MARYCON",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "18",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "TACCAD, KRISTIAN",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "CRUZ, ZOE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "DITAN, PRINCESS",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "DELA PAZ, JOYCE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MENDOZA , APRIL",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "MORELOS, GABRIEL",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "TACCAD, NICOLE",
     "awardee": "",
     "table": "29,34,40,45,51,52,57,58 & 59",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "VILLARICA, MARK ANTHONY",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "13",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "REVERENTE, JESTER CARLO",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "18",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "LUCERO, HOMER",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "AMPARO, RAINIEL KENNETE",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "ENRIQUEZ, ARNOLD",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "HECHANOVA, JAY AR",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "HERRERA, FRANCHESKA JOYCE",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "18",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "MENDOZA, YANAH",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "SEVILLA, EDU",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "DELOY, LOYDA",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "18",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "PANTALEON, HARRIS ABRIAN",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "BAYOT, CHRISTOPHER",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "HEMEDEZ, ALMA",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "CERNAL, JOANA G",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "13",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "LORENA, MA. THAISA Lubigan",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "18",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "SERRANO, ANTHONY",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "17",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "CAMPOSO, WENSON",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "17",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "ARAZA, MARIVIC",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "13",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "TIZON, AJERICO",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "17",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "DONAYRE, JAY JASPER",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "17",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "LAIGO, CAROLYN",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "IGNI, CHRISTIAN DAVID",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "13",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "BACUNGAN, PATRICK",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "17",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "MISAL, MARY JESCIEL",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "ALCAZAR, JANESA",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "17",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "BAYOT, CATHERINE",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "CASIMIRO, CHARITO",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "DELOS REYES, HEIDYLYN",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "CABRERA, JOSEPH",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "ABARCA, ALEXANDY",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "GARCIA, ANN CHRISTINE",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "SANTOS, JANET",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "21",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "CRUZ, CLENCIA",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "MUNSAYAC, FAITH",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "TARUN , JEREMY",
     "awardee": "VIP 200",
     "table": "12",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "RODRIGUEZ, MARILYN",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "MORALDE, ROCHELLE",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "DOMINGO, CIKAELLA",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "ORCINO, JHASEL",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "QUIJANO , JOEMAR",
     "awardee": "VIP 200",
     "table": "12",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "DEL ROSARIO , KRISTIAN",
     "awardee": "VIP 200",
     "table": "12",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "DE CASTRO, ROSEANNE",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "PANDOY, ERMILYN",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "TUGAFF, JANUS",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "GARCIA, EMERSON",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "TAMAYO, MELISA",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "21",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "CHUA, FRANCIS DALE",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "MACAPAGAL, JUVELYN",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "GONZALES, JAVY PAUL",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "JAVIER, JANINE",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "LACSINA, REYNOLD",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "CANIMO, AREL",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "MAGLANQUE, KIM",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "GONZALES, MYKE",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "BAUTISTA, ROSLYN",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "JAVIER, JEFFREY",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "REYES , ELAINE",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "21",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "DE JESUS, KEN",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "SANTOS, ROBERTO",
     "awardee": "VIP 200",
     "table": "12",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "CALOOY, ERICK",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "VILLANUEVA, ENGRACIA",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "CAPIL, AERON",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "VENTURINA, MARIA FATIMA JOYCE",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "AREVALO, JUDITH",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "BULANADI , BENJAMIN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "21",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "TIMBOL, JERIC",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "EVARISTO, LAARNI",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "BUAN, PATRICK",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "CABUSO, JAKO",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "CANLAS, ANALIZA",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "PASCUAL, MARICEL",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "EVARISTO, RICARDO",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "BUAN, JANICA",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "BUSTOS, JAMES MARIONE",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "SORIANO, JASPER",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "PINEDA, JEROME",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "PABLO, CRISTINE",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "21",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "ALIPIO, RIZALDY",
     "awardee": "VIP 200",
     "table": "12",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "TAMAYO, MIRASOL",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "BERNATIA, ANGELA",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "VICTORIA , DIANNE",
     "awardee": "VIP 200",
     "table": "12",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "MATEO, HAYDEE",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "ALIPIO, MAY LINN",
     "awardee": "VIP 200",
     "table": "12",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": "YES"
   },
   {
     "name": "PINEDA, JAYSON",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "DEL MUNDO, ELIJAH",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "21",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "PELAGIO, MA. KATRINA",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "BELTRAN, AIVAN",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
   },
   {
     "name": "PADUA, JENALYN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "22",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "REBADEJO, JERECO",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "22",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "BARROGA, RUTHER RAMON",
     "awardee": "Top Nominee Director",
     "table": "8",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": "YES"
   },
   {
     "name": "LIWAG, JOSE MARIA",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "22",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "TAMPILIC, ERWIN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "22",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "PARDE, EDUARDO",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "22",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "MIGUEL, CHRIS ALBERT",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "22",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ZOLETA, ALEXIS",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "22",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "BARSANAS, SHIELA",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "22",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "GARCES, KAREN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "22",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "FLORES, VICTOR JACINTO",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "22",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ADRIAN RAMOS,",
     "awardee": "Top 3 BST",
     "table": "6",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "JOHN ERON PAROHINOG - ADRIAN RAMOS,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ADRIAN RAMOS3,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ADRIAN RAMOS4,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ADRIAN RAMOS5,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ADRIAN RAMOS6,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ADRIAN RAMOS7,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ADRIAN RAMOS8,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "LANIE MENDOZA - ATHENAEUM,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "JOSEPH MABAL - FIRSTLY JOSEPH MABAL,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "WILHELMINA ESGUERRA - FIRSTLY JOSEPH MABAL,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "BLENDA LAO - BETHELAND,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ALLAN LAO - BETHELAND,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "THELMA MALALUAN - GEMS,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "KAREEN MABAGA - GEMS,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "RNSG1,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "RNSG2,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "MFG1,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "MFG2,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ABELLAR1,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ABELLAR2,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "1ST ASIA1,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "1ST ASIA2,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "1ST ASIA3,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "1ST ASIA4,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "1ST ASIA5,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "J'WELLZ REALTY1,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "J'WELLZ REALTY2,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "J'WELLZ REALTY3,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "CNC1,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "HYBRID REALTY BROKERAGE,",
     "awardee": "Top 3 BST",
     "table": "6",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "TINE BARCOMA1,",
     "awardee": "Top 3 BST",
     "table": "6",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "TINE BARCOMA2,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "MARIA LOURDES SANTIAGO JBC,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "CRISANTA VILLANUEVA JBC,",
     "awardee": "",
     "table": "27, 33 & 38",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "SABUERO, REY",
     "awardee": "Top VISMIN",
     "table": "8",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "LEUTERIO 1, ANTHONY",
     "awardee": "Top 3 BST",
     "table": "6",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "AUNGON, CATHERINE",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "20",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "CARAS, FRIA",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "20",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "DITCHON, FLUELLEN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "20",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "SALILI, REYAN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "20",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "RUELAN, ANGELYN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "20",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "QUINCO, RAINER",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "20",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "JADER, HERBERT",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "14",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "LLANES, MARIANNE",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "14",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ALVIZ, MAY",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "20",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ANAVISO, MARIDEL",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "20",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "MAGBANUA, KURT",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "19",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "SERILO, CHERYL",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "19",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "ARANETA, BENIGNO",
     "awardee": "VIP 200",
     "table": "8",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": "YES"
   },
   {
     "name": "ASIS, CYRINE",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "AGUARON, JENNIFER",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "PEÑAMANTE, NERISSA IRENE",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "CHRISTIANSON, RICHARD",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "DUMANIEL, CATHERINE",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "MANZANARES, CATHERINE",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": "YES"
   },
   {
     "name": "PARCON, KELLY",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": "YES"
   },
   {
     "name": "FLORES, ELENA JEAN",
     "awardee": "VIP 200",
     "table": "7",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": "YES"
   },
   {
     "name": "COSME, JARDINE JOY",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "MORANTE, JAY",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "SIMPRON, JENNIFER",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": "YES"
   },
   {
     "name": "GASPER, QUENNY MARIE",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "VILLAFUERTE, JESSICA",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "LEUTERIO 2, ANTHONY",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "SECRETO, KAYE",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "ADRI"
+    "personnel": "ADRI",
+    "raffle": ""
   },
   {
     "name": "MERZA, MARTY",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "12",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "ULOB, ARMIE",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "17",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "ATIBULA, DENNIS",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "17",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "MANLALANGIT, PATRICK",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "17",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "GAMBOA, GABRIELLA YSABEL",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "17",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "GAPUZ, CAZEL",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "MAABA, MAYNARD",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
-    "name": "VILLAMIN, HOPE CAROLYN",
+    "name": "LANGOMEZ, MARIA CRISTINA",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
-    "name": "PONTILLAS, ADRIAN JACOB",
+    "name": "CUDANIN, FERLYN",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "ESCAMILLAN, ADLAI",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "24",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "WONG, JAN",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "24",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "COLES, NEIL",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "24",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "MENDOZA, VANESSA",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "RICAFRENTE, YUAN",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "ALBOTRA, ELLENORE",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "24",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "VILLAPENA, DIANA",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "24",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "CRUZ, SHENNA",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "SANCHEZ, SHERYL",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "DE GUZMAN, EDLYN",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "IGNACIO, CHRISTOPHER",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "IGNACIO, ROCHELLE",
     "awardee": "",
     "table": "39, 50 & 56",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "NORONA, JEOFFY-VIEL",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "24",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "ELIJAY, FREDROSELYN",
     "awardee": "Top Nominee Director",
     "table": "8",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "PUELOS, ANDREA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "DULFO, SYLVIA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "MONTERO, ABIGAIL",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "SIA, MARIVIC",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "OBRADOR, PRINCESS",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "ELIJAY, ELLEMER",
     "awardee": "Top Nominee Agent",
     "table": "7",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": "YES"
   },
   {
     "name": "DANO, RICA MAE",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "OPAO, MARK BRIAN",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "LOBA, MARK",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "MAGSINO, REAGAN",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": "YES"
   },
   {
     "name": "MACALINDONG, JUDITH",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "DE VILLA, CATHERINE",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "REBOLA, MAAN",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "TUNGON, FLORIZA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "SARAO, WILBERT",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "21",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "CONDE, ALMA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "FAJARDO, JOANA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "MALDONADO, JUMAR",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "MORTEL, JOMAR",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "BREGILDO, JESSEL",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": "YES"
   },
   {
     "name": "DUWA, ANGELICA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "DELA CRUZ, LYSA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "MALDONADO, ROWENA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "DAYADAY, MARY GRACE",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "GUBAN, MELODY",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "MAGSINO, JEFFREY",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "DUMDUM, JULIUS",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "CULABA, JOY ANN",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "PARAS, MAYSA",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "21",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "DEANG, HAZEL",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "PANESA, MUTYA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "LANZADOR, RAMIL",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "VILLARIA, LAUREN",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "BARRIOS, ADRALEN",
     "awardee": "VIP 200",
     "table": "13",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": "YES"
   },
   {
     "name": "AGTINA, DIANA MAE",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": "YES"
   },
   {
     "name": "MONTEALTO, ROSALIE",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "DE LUNA, JOCELYN",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "MERCED, FRELIZARDO EARL",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "RODERIGUEZ, LYZLY",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "PANA, JOLIE",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "REDOMI, JACQUELINE",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "CAREDO, WHILJAY",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "21",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "MEDINA, MHARIA PAZ",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "DIONELA, MARIO",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": "YES"
   },
   {
     "name": "AQUINO, EDITH",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "DIONELA, KRISTEL",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "BARTE, MARICOR",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "RAMOS, ALYSSA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "MONTERO, MARIBEL",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "HABITAN, FRESNEDIE",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "MAOMBONG, GINA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "HERNANDEZ, ROSALIE",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "21",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "VARGAS, RIZA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "RIVERA, BELEN",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "BITUIN, ERNALYN",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "DELGADO, JANICE",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "LEYESA, VLADIMIR",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "DELGADO, JULIET",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "SOBREVINIAS, RAYMOND",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "RAMOS, LENIE",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "RIVERA, KUTZ RUSSEL",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "BALAGTAS, MYLA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "LLARENAS, RAMONA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "ANG, JAMES",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "20",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "BANARES, OFELIA",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "ENRIQUEZ, NEIL",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "VIRI, REYNALDO",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "DELA PAZ, MAXIMA",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "20",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "MARZQUEZ, CHENNIE",
     "awardee": "",
     "table": "25,31,36,42,47 & 53",
-    "personnel": "JAZIE"
+    "personnel": "JAZIE",
+    "raffle": ""
   },
   {
     "name": "BUNGUBUNG, JAMES PAUL Sabangan",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "19",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "BAUTISTA, GENESIS MARIE Aclaro",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "GERONIMO, ROB JESTHER",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "CABILLON, MARVIN Elles",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ROS, JESSE CARLO Bilbao",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "HERNANDEZ, MA. GABRIELLA Baquiran",
     "awardee": "",
     "table": "23 & 28",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "GERONIMO, ROBERTO",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "19",
-    "personnel": "RONA"
+    "personnel": "RONA",
+    "raffle": ""
   },
   {
     "name": "ROJAS, RANCE",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "12",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "UGALI, COCO",
-    "awardee": "SD/DH",
+    "awardee": "",
     "table": "12",
-    "personnel": "TRISH"
+    "personnel": "TRISH",
+    "raffle": ""
   },
   {
     "name": "PINEDA, JOSHUA",
     "awardee": "",
     "table": "30, 35, 41 & 46",
-    "personnel": "KER"
+    "personnel": "KER",
+    "raffle": ""
+  },
+  {
+    "name": "FALLENA, DANTE",
+    "awardee": "",
+    "table": "39, 50 & 56",
+    "personnel": "TRISH",
+    "raffle": ""
   }
 ];
 
@@ -3093,7 +3598,8 @@ registerButton.addEventListener("click", async function() {
         name: guest.name,
         awardee: guest.awardee || "",
         table: guest.table || "",
-        personnel: guest.personnel || ""
+        personnel: guest.personnel || "",
+        raffle: guest.raffle || ""
     };
 
     try {
@@ -3128,6 +3634,13 @@ registerButton.addEventListener("click", async function() {
     } else {
         awardSection.classList.add("hidden");
         document.getElementById("awardee").textContent = "";
+    }
+
+    const raffleSection = document.getElementById("raffleSection");
+    if (guest.raffle && guest.raffle.trim().toUpperCase() === "YES") {
+        raffleSection.classList.remove("hidden");
+    } else {
+        raffleSection.classList.add("hidden");
     }
 });
 </script>
